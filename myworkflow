@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    stages {
+        stage('fetch source and build') {
+            steps {
+                git url: 'https://github.com/kvswp/mydemo'
+                echo 'source fetched and build'
+                
+            }
+            post {
+                success {
+                    echo 'copy artifacts'
+                }
+            }
+        }
+        stage('trigger test with base build') {
+            steps {
+                echo 'test triggered using axiom'
+            }
+        }
+        stage('query and identify eligible changes') {
+            steps {
+                echo 'gerrit query done, 10 eligible changes'
+            }
+        }
+        stage('cherrypick and initiate su build') {
+            steps {
+                echo 'cherripick done,su build in progress'
+            }
+            post {
+                success {
+                    echo 'copy artifacts'
+                }
+            }    
+        }
+        stage('trigger test with su build') {
+            steps {
+                echo 'su axiom run with cts vts in progress'
+            }
+        }
+        
+    }
+}
