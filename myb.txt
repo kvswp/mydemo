@@ -1,3 +1,6 @@
 eyes
 nose
 mouth
+legs
+stomach belly
+elbow hands
